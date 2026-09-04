@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Ejemplo 1 Stack",
+    "slug": "ejemplo_1_stack_run",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "ejemplo1stackrun",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "output": "static"
+    },
+    "plugins": ["expo-router"]
+  }
+}
