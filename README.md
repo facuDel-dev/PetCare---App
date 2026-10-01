@@ -1,56 +1,23 @@
-# Welcome to your Expo app 👋
+Nombre del proyecto: PetCare
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Descripción:
+Muchos dueños de mascotas olvidan fechas clave como vacunas, desparasitaciones o visitas al veterinario, lo que puede afectar la salud de sus animales. PetCare busca resolver esto ofreciendo un sistema simple de recordatorios, registro de información y seguimiento de cuidados.
 
-## Get started
+Integrantes:
 
-1. Install dependencies
+- Celeste Lopez
+- Facundo Delera Hernández
 
-   ```bash
-   npm install
-   ```
+Listado de 5 features:
 
-2. Start the app
+- Registrar mascota - Crear un perfil con nombre, especie/raza, edad y foto.
+- Agenda de cuidados - Registro de vacunas, desparasitaciones y citas medicas.
+- Recordatorios automáticos - Notificaciones para alimentar, pasear o asistir a un turno.
+- Historial de salud - Consultar tratamientos, visitas y evolución de la mascota.
 
-   ```bash
-   npx expo start
-   ```
+Estado de features:
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Registrar mascota - Hecho
+- Agenda de cuidados - En proceso. (Por el momento dolo se pueden ver datos estáticos en la agenda)
+- Recordatorios automáticos - Pendiente
+- Historial de salud - Pendiente

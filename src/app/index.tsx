@@ -1,98 +1,126 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  Text,
+  View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Button,
+} from "react-native";
+import MascotaCard from "../components/MascotaCard";
+import { useRouter } from "expo-router";
+import { useMascotasStore } from "../store/useMascotasStore";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+export default function Index() {
+  const router = useRouter();
+  const mascotas = useMascotasStore((state) => state.mascotas);
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+    <View style={styles.mainWrapper}>
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          backgroundColor: "#fdfdfdde",
+          padding: 20,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 27,
+            fontWeight: "bold",
+            textAlign: "center",
+            marginBottom: 20,
+          }}
+        >
+          <Text style={{ color: "#bd803ae5" }}>Pet</Text>
+          <Text style={{ color: "#1f1f1f" }}>Care</Text>
+        </Text>
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+        <Image
+          source={{
+            uri: "https://images.unsplash.com/photo-1543466835-00a7907e9de1",
+          }}
+          style={{
+            width: "100%",
+            height: 200,
+            borderRadius: 14,
+            alignSelf: "center",
+            marginBottom: 20,
+          }}
+          resizeMode="cover"
+        />
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
+        <View style={{ padding: 10, borderRadius: 5, marginBottom: 15 }}>
+          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#333" }}>
+            🐾 ¡Bienvenido!
+          </Text>
+        </View>
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+        {/*Listado de Mascotas*/}
+        <Text style={styles.sectionTitle}>Mis Mascotas</Text>
+        {mascotas.map((mascota) => (
+          <TouchableOpacity
+            key={mascota.id}
+            activeOpacity={0.6}
+            onPress={() =>
+              router.push({
+                pathname: "/DetalleMascota",
+                params: { id: mascota.id },
+              })
+            }
+          >
+            <MascotaCard
+              nombre={mascota.nombre}
+              especie={mascota.especie}
+              raza={mascota.raza}
+            />
+          </TouchableOpacity>
+        ))}
+
+        {/*Boton Agenda de Cuidados*/}
+        <View style={{ marginTop: 20, marginBottom: 80 }}>
+          <Button
+            title="Ver Agenda de Cuidados"
+            onPress={() => router.push("/AgendaPantalla")}
           />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+        </View>
+      </ScrollView>
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      {/*Boton flotante Agregar Mascota*/}
+      <TouchableOpacity
+        style={styles.fab}
+        activeOpacity={0.8}
+        onPress={() => router.push("/AgregarMascota")}
+      >
+        <Text style={styles.fabIcon}>＋</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#333",
+    marginTop: 15,
+    marginBottom: 10,
   },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+
+  fab: {
+    position: "absolute",
+    right: 20,
+    bottom: 25,
+    backgroundColor: "#bd803a",
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
   },
 });
