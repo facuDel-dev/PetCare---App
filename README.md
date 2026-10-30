@@ -8,7 +8,7 @@ Integrantes:
 - Celeste Lopez
 - Facundo Delera Hernández
 
-Listado de 5 features:
+Listado de 4 features:
 
 - Registrar mascota - Crear un perfil con nombre, especie/raza, edad y foto.
 - Agenda de cuidados - Registro de vacunas, desparasitaciones y citas medicas.
@@ -18,6 +18,6 @@ Listado de 5 features:
 Estado de features:
 
 - Registrar mascota - Hecho
-- Agenda de cuidados - En proceso. (Por el momento dolo se pueden ver datos estáticos en la agenda)
-- Recordatorios automáticos - Pendiente
-- Historial de salud - Pendiente
+- Agenda de cuidados - Hecho
+- Recordatorios automáticos - Hecho
+- Historial de salud - Hecho

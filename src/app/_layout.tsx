@@ -3,10 +3,10 @@ import { Stack } from "expo-router";
 export default function Layout() {
   return (
     <Stack>
-      <Stack.Screen name="index" options={{ title: "PetCare-App" }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
-        name="AgendaPantalla"
-        options={{ title: "Agenda de Cuidados" }}
+        name="AgregarMascota"
+        options={{ title: "Agregar Mascota" }}
       />
       <Stack.Screen
         name="DetalleMascota"

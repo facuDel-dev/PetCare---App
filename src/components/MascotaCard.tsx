@@ -1,4 +1,5 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from "react-native";
+import { colors } from "../theme/colors";
 
 type TarjetaMascotaProps = {
   nombre: string;
@@ -6,12 +7,18 @@ type TarjetaMascotaProps = {
   raza: string;
 };
 
-export default function TarjetaMascota({ nombre, especie, raza }: TarjetaMascotaProps) {
+export default function TarjetaMascota({
+  nombre,
+  especie,
+  raza,
+}: TarjetaMascotaProps) {
   return (
     <View style={styles.card}>
       <View style={styles.info}>
         <Text style={styles.nombre}>{nombre}</Text>
-        <Text style={styles.detalle}>{especie} • {raza}</Text>
+        <Text style={styles.detalle}>
+          {especie} • {raza}
+        </Text>
       </View>
     </View>
   );
@@ -19,21 +26,29 @@ export default function TarjetaMascota({ nombre, especie, raza }: TarjetaMascota
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: colors.card,
+    borderRadius: 15,
     padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
+    marginVertical: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  info: {
-    flexDirection: 'column',
-  },
+
   nombre: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: colors.primary,
   },
+
+  info: {
+    color: colors.text,
+    marginTop: 4,
+  },
+
   detalle: {
     fontSize: 14,
-    color: '#555',
+    color: colors.text,
   },
 });

@@ -1,22 +1,23 @@
+import { useRouter } from "expo-router";
 import {
-  Text,
-  View,
+  Button,
   Image,
   ScrollView,
   StyleSheet,
+  Text,
   TouchableOpacity,
-  Button,
+  View,
 } from "react-native";
-import MascotaCard from "../components/MascotaCard";
-import { useRouter } from "expo-router";
-import { useMascotasStore } from "../store/useMascotasStore";
+import MascotaCard from "../../components/MascotaCard";
+import { useMascotasStore } from "../../store/useMascotasStore";
+import { colors } from "../../theme/colors";
 
 export default function Index() {
   const router = useRouter();
   const mascotas = useMascotasStore((state) => state.mascotas);
 
   return (
-    <View style={styles.mainWrapper}>
+    <View>
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
@@ -32,8 +33,7 @@ export default function Index() {
             marginBottom: 20,
           }}
         >
-          <Text style={{ color: "#bd803ae5" }}>Pet</Text>
-          <Text style={{ color: "#1f1f1f" }}>Care</Text>
+          <Text style={styles.titulo}>🐾 PetCare</Text>
         </Text>
 
         <Image
@@ -88,11 +88,11 @@ export default function Index() {
 
       {/*Boton flotante Agregar Mascota*/}
       <TouchableOpacity
-        style={styles.fab}
+        style={styles.boton}
         activeOpacity={0.8}
         onPress={() => router.push("/AgregarMascota")}
       >
-        <Text style={styles.fabIcon}>＋</Text>
+        <Text style={styles.textoBoton}>＋</Text>
       </TouchableOpacity>
     </View>
   );
@@ -107,20 +107,38 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  fab: {
+  boton: {
     position: "absolute",
+    backgroundColor: colors.primary,
+    padding: 14,
+    alignItems: "center",
+    marginBottom: 15,
     right: 20,
     bottom: 25,
-    backgroundColor: "#bd803a",
     width: 56,
     height: 56,
     borderRadius: 28,
     justifyContent: "center",
-    alignItems: "center",
     elevation: 5,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
+  },
+
+  textoBoton: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    padding: 20,
+  },
+
+  titulo: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: colors.primary,
+    textAlign: "center",
+    marginBottom: 20,
   },
 });

@@ -2,10 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { MisMascotas } from "../constants/Mascotas";
+import { useMascotasStore } from "../store/useMascotasStore";
 
 export default function DetalleMascota() {
   const { id } = useLocalSearchParams();
-  const mascota = MisMascotas.find((m) => m.id.toString() === id);
+  const mascotas = useMascotasStore((state) => state.mascotas);
+  const mascota = mascotas.find((m) => m.id.toString() === id);
 
   if (!mascota) {
     return (

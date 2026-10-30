@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
-  View,
+  ScrollView,
+  StyleSheet,
   Text,
   TextInput,
-  StyleSheet,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
-import { useRouter } from "expo-router";
 import { useMascotasStore } from "../store/useMascotasStore";
+import { colors } from "../theme/colors";
 
 export default function AgregarMascota() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function AgregarMascota() {
   const [raza, setRaza] = useState("");
   const [foto, setFoto] = useState("");
 
-  //Verificar que no se admitan valores vacíos
+  //Verificar que no se admitan valores vacios
   const guardarMascota = () => {
     if (!nombre.trim() || !especie.trim()) {
       alert("Por favor, ingrese al menos el nombre y la especie");
@@ -41,41 +41,35 @@ export default function AgregarMascota() {
   };
 
   return (
-    <ScrollView style={[styles.container, styles.containerDark]}>
-      <Text style={[styles.title, styles.textDark]}>Registrar Mascota 🐾</Text>
+    <ScrollView style={[styles.container]}>
+      <Text style={[styles.title]}>Registrar Mascota 🐾</Text>
 
-      <Text style={[styles.label, styles.textDark]}>Nombre</Text>
+      <Text style={[styles.label]}>Nombre</Text>
       <TextInput
-        style={[styles.input, styles.inputDark]}
+        style={[styles.input]}
         placeholder="Firulais"
         value={nombre}
         onChangeText={setNombre}
       />
 
-      <Text style={[styles.label, styles.textDark]}>Especie</Text>
+      <Text style={[styles.label]}>Especie</Text>
       <TextInput
-        style={[styles.input, styles.inputDark]}
+        style={[styles.input]}
         placeholder="Perro, Gato, Loro"
         value={especie}
         onChangeText={setEspecie}
       />
 
-      <Text style={[styles.label, styles.textDark]}>Raza</Text>
+      <Text style={[styles.label]}>Raza</Text>
       <TextInput
-        style={[styles.input, styles.inputDark]}
+        style={[styles.input]}
         placeholder="Golden Retriever, Mestizo"
         value={raza}
         onChangeText={setRaza}
       />
 
-      <Text style={[styles.label, styles.textDark]}>
-        URL de Foto (opcional)
-      </Text>
-      <TextInput
-        style={[styles.input, styles.inputDark]}
-        value={foto}
-        onChangeText={setFoto}
-      />
+      <Text style={[styles.label]}>URL de Foto (opcional)</Text>
+      <TextInput style={[styles.input]} value={foto} onChangeText={setFoto} />
 
       <TouchableOpacity style={styles.button} onPress={guardarMascota}>
         <Text style={styles.buttonText}>Guardar Mascota</Text>
@@ -98,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
   },
   button: {
-    backgroundColor: "#bd803a",
+    backgroundColor: colors.primary,
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
